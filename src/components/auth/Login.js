@@ -10,7 +10,7 @@ export default function Login() {
                 <img src={logo} alt="logo"/>
                 </div>
             <div className="form">
-                <h1 className="login-header">Login</h1>
+                <h1 className="login-header">Welcome!</h1>
                 <Formik
                 initialValues={{
                     email: '',

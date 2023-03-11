@@ -3,6 +3,17 @@
     flex-direction: row;
 }
 
+@media only screen and (max-width: 600px) {
+    .page{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .image {
+        display: none;
+    }
+}
+
 .image {
     width: 50%;
     height: 100vh;
@@ -14,6 +25,8 @@
 
 .login-header {
     font-size: large;
+    font-weight: 800;
+    padding-bottom: 30px;
 }
 
 .form {
