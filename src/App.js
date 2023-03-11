@@ -1,49 +1,21 @@
-import { Component } from 'react';
 import './App.css';
-import Table from './Table';
-import Form from './Form';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Dashboard from './components/dashboard/Dashboard';
+import Login from './components/auth/Login';
 
 
-class  App extends Component {
-  state = {
-   data : [
-    {
-      action: 'Clean up',
-    },
-    {
-      action: 'Write some code',
-    },
-    {
-      action: 'Sip some cofee',
-    },
-  ]
-}
-
-  removeAction = (index) => {
-    const { data } = this.state
-    
-    // remove item and update state.
-    this.setState({
-      data: data.filter((_, i) => {
-        return i !== index
-      }),
-    })
-  }
-
-  handleSubmit = action => {
-    this.setState({data: [...this.state.data, action]});
-  }
-
-  render(){
-    const { data } = this.state
-  
-    return (
-      <div class="grid grid-cols-2 divide-x m-10">
-        <Table data={data} removeAction={this.removeAction}/>
-        <Form handleSubmit = {this.handleSubmit} />
-      </div>
-    );
-    }
+function App(){
+  return (
+    <div className='wrapper'>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Login/>} />
+          <Route path='/dashboard' element={<Dashboard />}>
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
+  )
 }
 
 export default App;
