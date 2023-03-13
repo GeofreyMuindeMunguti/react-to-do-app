@@ -3,7 +3,7 @@ import { Formik } from "formik"
 import './Login.css'
 import logo from '../../logo.svg'; 
 
-export default function Login() {
+export default function Login({setLoggedIn}) {
     return (
         <div className="page">
             <div className="image">
@@ -27,10 +27,9 @@ export default function Login() {
                     return errors
                 }}
                 onSubmit={(values, {setSubmitting}) => {
-                    alert(JSON.stringify(values))
-                    setTimeout(() => {
-                        setSubmitting(false)
-                    }, 400)
+                    // alert(JSON.stringify(values))
+                    localStorage.setItem("authenticated", true);
+                    setLoggedIn(true)
                 }}
                 >{({
                     values,

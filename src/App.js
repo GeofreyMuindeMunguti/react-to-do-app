@@ -1,18 +1,17 @@
 import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Dashboard from './components/dashboard/Dashboard';
+import { BrowserRouter } from 'react-router-dom';
 import Login from './components/auth/Login';
+import Root from './components/Root';
+import { useState } from 'react';
 
 
 function App(){
+  const [isLoggedIn, setLoggedIn] = useState(localStorage.getItem("authenticated") || false)
+
   return (
     <div className='wrapper'>
       <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<Login/>} />
-          <Route path='/dashboard' element={<Dashboard />}>
-          </Route>
-        </Routes>
+        {isLoggedIn ? <Root/> : <Login setLoggedIn={setLoggedIn}/>}
       </BrowserRouter>
     </div>
   )
